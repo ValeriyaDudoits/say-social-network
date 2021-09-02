@@ -1,0 +1,14 @@
+:host {
+  flex-shrink: 0;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .git-info,
+  .phone-info {
+    display: flex;
+    align-items: center;
+  }
+}
