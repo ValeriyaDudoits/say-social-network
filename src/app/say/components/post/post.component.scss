@@ -1,0 +1,15 @@
+.post-block {
+  width: 1000px;
+  margin: 5px auto;
+  padding: 10px;
+  border: 1px dashed #ff4081;
+  border-radius: 15px;
+
+  .like {
+    display: flex;
+    align-items: center;
+  }
+}
+p {
+  margin: 0;
+}

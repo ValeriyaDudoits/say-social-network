@@ -1,0 +1,11 @@
+<div class="post-block">
+  <p>{{post.text}}</p>
+  <p>{{post.publishedAt | date: 'mediumDate'}}</p>
+  <div class="like">
+    <button mat-icon-button color="warn" aria-label="like">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <p>{{post.likes}}</p>
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+.user-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 263px;
+  height: 350px;
+  margin: 15px;
+  border: 5px solid #3f51b5;
+  box-shadow: 5px 0px 10px #00000033;
+
+  &:hover {
+    transform: scale(1.02);
+    border: 5px solid #ff4081;
+    transition: all 0.5s;
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
+}

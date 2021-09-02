@@ -9,7 +9,7 @@
         "createDefaultProgram": true
       },
       "extends": [
-        "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
         "airbnb-typescript/base"
       ],
       "rules": {
@@ -43,7 +43,7 @@
     },
     {
       "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "extends": ["plugin:@typescript-eslint/eslint-recommended"],
       "rules": {}
     }
   ]

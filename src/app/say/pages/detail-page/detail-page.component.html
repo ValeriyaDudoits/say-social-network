@@ -1,0 +1,27 @@
+<div class="detail-block" *ngIf='!isEmptyObject(card)'>
+  <div class="info-block">
+    <div class="photo">
+      <img [src]="card.photo" alt="photo" height="300px" width="300px">
+    </div>
+    <div class="info">
+      <p><span>Name: </span>{{card.name}}</p>
+      <p><span>Country: </span>{{card.country}}</p>
+      <p><span>City: </span>{{card.city}}</p>
+      <p><span>Age: </span>27</p>
+      <p><span>Birthday: </span>{{card.birthday | date: 'MMMM d, y'}}</p>
+      <p><span>Education: </span>{{card.education}}</p>
+    </div>
+  </div>
+
+  <div class="post-block">
+    <div class="post-name">
+      <h2>Posts</h2>
+    </div>
+    <div *ngIf="card.posts.length > 0; else noPostsBlock">
+      <app-post *ngFor="let post of card.posts" [post]="post"></app-post>
+    </div>
+    <ng-template #noPostsBlock>
+      <p class="warning">No posts yet!</p>
+    </ng-template>
+  </div>
+</div>

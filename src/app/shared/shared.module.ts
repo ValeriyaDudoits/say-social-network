@@ -1,27 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     MatIconModule,
     MatToolbarModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
   ],
   exports: [
-    BrowserAnimationsModule,
+
     MatIconModule,
     MatToolbarModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,53 @@
+:host {
+  flex: 1 0 auto;
+}
+
+.detail-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+
+  .info-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+
+    .photo {
+      border: 2px solid #3f51b5;
+      border-radius: 5px;
+    }
+    span {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+
+  .post-block {
+    display: flex;
+    flex-direction: column;
+
+    .post-name {
+      display: flex;
+      justify-content: center;
+      width: 100vw;
+      margin: 15px 0;
+      background-color: rgba(63, 81, 181, 0.8);
+      overflow: hidden;
+
+      h2 {
+        margin: 0;
+      }
+    }
+
+  }
+
+}
+
+.warning {
+  margin: 0 auto;
+  font-size: 16px;
+  color: #ff4081;
+}

@@ -116,7 +116,7 @@
       }
     }
   },
-  "defaultProject": "shop",
+  "defaultProject": "say",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }
