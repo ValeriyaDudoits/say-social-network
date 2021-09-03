@@ -32,8 +32,8 @@
   </mat-form-field>
 
   <div class="btn-block">
-    <button mat-raised-button color="accent" [disabled]="form.invalid">login</button>
-    <button mat-raised-button color="accent" [disabled]="form.invalid">login as Admin</button>
+    <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="login()">login</button>
+    <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="loginAsAdmin()">login as Admin</button>
   </div>
 
 </form>

@@ -7,7 +7,7 @@
       <p><span>Name: </span>{{card.name}}</p>
       <p><span>Country: </span>{{card.country}}</p>
       <p><span>City: </span>{{card.city}}</p>
-      <p><span>Age: </span>27</p>
+      <p><span>Age: </span>{{card.birthday | age}}</p>
       <p><span>Birthday: </span>{{card.birthday | date: 'MMMM d, y'}}</p>
       <p><span>Education: </span>{{card.education}}</p>
     </div>

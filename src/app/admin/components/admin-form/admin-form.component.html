@@ -1,0 +1,55 @@
+<form class="admin-form" [formGroup]="form">
+  <h2>New User</h2>
+
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" placeholder="Enter name">
+    <mat-error *ngIf="name.hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>Surname</mat-label>
+    <input matInput formControlName="surname" placeholder="Enter surname">
+    <mat-error *ngIf="surname.hasError('required')">
+      Surname is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Birthday</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthday">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="birthday.hasError('required')">
+      Birthday is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>Country</mat-label>
+    <input matInput formControlName="country" placeholder="Enter country">
+    <mat-error *ngIf="country.hasError('required')">
+      Country is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>City</mat-label>
+    <input matInput formControlName="city" placeholder="Enter city">
+    <mat-error *ngIf="city.hasError('required')">
+      City is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>Education</mat-label>
+    <input matInput formControlName="education" placeholder="Enter education">
+    <mat-error *ngIf="education.hasError('required')">
+      Education is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button class="create-btn" mat-raised-button color="accent" [disabled]="form.invalid">Create</button>
+</form>

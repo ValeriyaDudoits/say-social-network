@@ -1,8 +1,12 @@
 <mat-card class="user-card">
   <mat-card-header>
-    <mat-card-title>{{card?.name}}</mat-card-title>
-    <mat-card-subtitle>{{card?.city}}</mat-card-subtitle>
+    <mat-icon [appOnline]="card.online">stay_primary_portrait</mat-icon>
+    <mat-card-title>{{card.name}}</mat-card-title>
+    <mat-card-subtitle>{{card.city}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image [src]="card?.photo" alt="Photo" height="200px" width="200px">
-  <button mat-raised-button color="primary" class="hover" [routerLink]="['/main',card?.id]">Show more</button>
+  <img mat-card-image [src]="card.photo" alt="Photo" height="200px" width="200px">
+  <div class="btn-block">
+    <button mat-raised-button color="primary" class="hover" [routerLink]="['/main',card.id]">Show more</button>
+    <button mat-raised-button color="primary" class="hover" *ngIf="isAdmin" (click)="openDialog(card.id)">Delete</button>
+  </div>
 </mat-card>

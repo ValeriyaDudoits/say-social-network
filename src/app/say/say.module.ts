@@ -8,8 +8,6 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 import { PostComponent } from './components/post/post.component';
 
-
-
 @NgModule({
   declarations: [
     MainPageComponent,

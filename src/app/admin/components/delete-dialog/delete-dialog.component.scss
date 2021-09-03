@@ -1,0 +1,26 @@
+h1 {
+  color: #000;
+}
+
+.btn-block {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+
+  .no-btn,
+  .okay-btn {
+    border-radius: 5px;
+    padding: 7px;
+    cursor: pointer;
+    color: #fff;
+  }
+  .no-btn {
+    background-color: #ff4081;
+    border: 1px solid #ff4081;
+  }
+
+  .okay-btn {
+    background-color: #f44336;
+    border: 1px solid #f44336;
+  }
+}

@@ -6,6 +6,7 @@ export interface ICard {
   city: string,
   education: string,
   photo: string,
+  online?: boolean;
   posts: IPost[]
 }
 

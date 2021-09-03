@@ -20,4 +20,7 @@
     height: 200px;
   }
 
+  .btn-block >:first-child {
+    margin: 0 15px;
+  }
 }
