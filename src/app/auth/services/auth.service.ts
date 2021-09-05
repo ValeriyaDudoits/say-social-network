@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
   public isAuth = new BehaviorSubject(false);
 
   public isAdmin = new BehaviorSubject(false);

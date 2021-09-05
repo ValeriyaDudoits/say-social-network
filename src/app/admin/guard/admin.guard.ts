@@ -1,5 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree
+} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -16,21 +18,20 @@ export class AdminGuard implements CanActivate, OnDestroy {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    this.subscription = this.auth.isAdmin.subscribe(data => {
-      this.isAdmin$ = data
-    })
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    this.subscription = this.auth.isAdmin.subscribe((data) => {
+      this.isAdmin$ = data;
+    });
     if (this.isAdmin$) {
       return true;
-    } else {
-      this.router.navigate(['/main']);
-      this.toastr.error("Please, login as Admin");
-      return false;
     }
+    this.router.navigate(['/main']);
+    this.toastr.error('Please, login as Admin');
+    return false;
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

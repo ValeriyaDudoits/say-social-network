@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import {
+  AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators
+} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { LanguagService } from 'src/app/core/services/language.service';
 import { DataService } from 'src/app/say/services/data.service';
 import { ICard } from 'src/app/shared/models/card';
 
@@ -11,7 +15,6 @@ import { ICard } from 'src/app/shared/models/card';
   styleUrls: ['./edit-form.component.scss']
 })
 export class EditFormComponent implements OnInit, OnDestroy {
-
   private subscription$ = new Subscription();
 
   public card: ICard = {} as ICard;
@@ -36,11 +39,16 @@ export class EditFormComponent implements OnInit, OnDestroy {
 
   public enteredAt = new FormControl('', [Validators.required, this.integer()]);
 
-  public graduatedAt = new FormControl('', [Validators.required, this.graduetedValidation(this.enteredAt), this.integer()]);
+  public graduatedAt = new FormControl('', [Validators.required,
+    this.graduetedValidation(this.enteredAt), this.integer()]);
 
   public photo = new FormControl('');
 
-  constructor(private userService: DataService, private route: ActivatedRoute, private router: Router) {
+  constructor(private userService: DataService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public translate: TranslateService,
+    private langService: LanguagService) {
     this.form = new FormGroup({
       name: this.name,
       surname: this.surname,
@@ -63,7 +71,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
       this.id = +params.id;
       this.userService.getById(+params.id);
     });
-    this.subscription$.add(this.userService.card$.subscribe(card => {
+    this.subscription$.add(this.userService.card$.subscribe((card) => {
       this.card = card;
       this.base64 = card.photo;
       this.name.setValue(this.card.name.split(' ')[0]);
@@ -78,11 +86,12 @@ export class EditFormComponent implements OnInit, OnDestroy {
       });
       if (this.card.education.length > 1) {
         for (let i = 1; i < this.card.education.length; i++) {
-          const enteredAt = new FormControl('', [Validators.required, this.integer()])
+          const enteredAt = new FormControl('', [Validators.required, this.integer()]);
           const group = new FormGroup({
             university: new FormControl('', [Validators.minLength(2), Validators.required]),
-            enteredAt: enteredAt,
-            graduatedAt: new FormControl('', [Validators.required, this.graduetedValidation(enteredAt.value), this.integer()]),
+            enteredAt,
+            graduatedAt: new FormControl('', [Validators.required,
+              this.graduetedValidation(enteredAt.value), this.integer()]),
           });
           (this.form.get('education') as FormArray)?.push(group);
           (this.form.get('education') as FormArray)?.get(`${i}`)?.patchValue({
@@ -90,10 +99,10 @@ export class EditFormComponent implements OnInit, OnDestroy {
             enteredAt: this.card.education[i].enteredAt,
             graduatedAt: this.card.education[i].graduatedAt,
           });
-        };
+        }
       }
       this.photo.setValue(this.base64);
-    }));
+    })).add(this.langService.language.subscribe((data) => this.translate.use(data)));
   }
 
   ngOnDestroy() {
@@ -101,7 +110,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    let date = this.birthday.value.toString();
+    const date = this.birthday.value.toString();
     const data: ICard = {
       name: `${this.name.value} ${this.surname.value}`,
       birthday: date,
@@ -112,7 +121,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
       online: false,
       posts: this.card.posts,
       id: this.userService.getId()
-    }
+    };
     this.userService.editUser(this.id, data);
     this.router.navigate(['/main']);
   }
@@ -135,22 +144,22 @@ export class EditFormComponent implements OnInit, OnDestroy {
   }
 
   private birthdayValidation(control: FormControl,): ValidationErrors | null {
-    const value = control.value;
+    const { value } = control;
     const now = Date.now();
     if (value > now) {
-      return { birthdayValidation: 'Your date is incorrect!' }
+      return { birthdayValidation: 'Your date is incorrect!' };
     }
     return null;
   }
 
   private graduetedValidation(dateControl: FormControl) {
     return (control: FormControl): ValidationErrors | null => {
-      const value: string = control.value;
+      const { value } = control;
       if ((+dateControl.value - +value) > 0) {
-        return { graduetedValidation: 'Your date is incorrect!' }
+        return { graduetedValidation: 'Your date is incorrect!' };
       }
       return null;
-    }
+    };
   }
 
   private integer(): ValidatorFn {
@@ -166,6 +175,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
       return null;
     };
   }
+
   onFileSelected(event: any) {
     this.form.get('photo')?.setValue(event?.target?.files[0]);
     const reader = new FileReader();
@@ -174,5 +184,4 @@ export class EditFormComponent implements OnInit, OnDestroy {
     };
     reader.readAsDataURL(event?.target?.files[0]);
   }
-
 }

@@ -1,8 +1,8 @@
 <form class="admin-form" [formGroup]="form">
-  <h2>Edit {{card.name}}</h2>
+  <h2>{{'ACTIONS.EDIT' | translate}} {{card.name}}</h2>
 
   <mat-form-field appearance="outline" class="field">
-    <mat-label>Name</mat-label>
+    <mat-label>{{'FORM.NAME' | translate}}</mat-label>
     <input matInput formControlName="name" placeholder="Enter name">
     <mat-error *ngIf="name.hasError('required')">
       Name is <strong>required</strong>
@@ -10,7 +10,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="field">
-    <mat-label>Surname</mat-label>
+    <mat-label>{{'FORM.SURNAME' | translate}}</mat-label>
     <input matInput formControlName="surname" placeholder="Enter surname">
     <mat-error *ngIf="surname.hasError('required')">
       Surname is <strong>required</strong>
@@ -18,7 +18,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Birthday</mat-label>
+    <mat-label>{{'FORM.BIRTHDAY' | translate}}</mat-label>
     <input matInput [matDatepicker]="picker" formControlName="birthday">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -31,7 +31,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="field">
-    <mat-label>Country</mat-label>
+    <mat-label>{{'FORM.COUNTRY' | translate}}</mat-label>
     <input matInput formControlName="country" placeholder="Enter country">
     <mat-error *ngIf="country.hasError('required')">
       Country is <strong>required</strong>
@@ -39,7 +39,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="field">
-    <mat-label>City</mat-label>
+    <mat-label>{{'FORM.CITY' | translate}}</mat-label>
     <input matInput formControlName="city" placeholder="Enter city">
     <mat-error *ngIf="city.hasError('required')">
       City is <strong>required</strong>
@@ -47,8 +47,8 @@
   </mat-form-field>
 
   <div class="admin-form">
-    <h3>Education</h3>
-    <button mat-raised-button (click)="addUniversity()">Add university</button>
+    <h3>{{'FORM.EDUCATION' | translate}}</h3>
+    <button mat-raised-button (click)="addUniversity()">{{'BTNS.ADDUNIVERSITY' | translate}}</button>
 
     <div class="admin-form" formArrayName="education" *ngFor="let control of getControls(); let i=index">
       <ng-container class="form-control" [formGroupName]="i">
@@ -64,7 +64,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="field">
-          <mat-label>EnteredAt</mat-label>
+          <mat-label>{{'FORM.ENTEREDAT' | translate}}</mat-label>
           <input matInput formControlName="enteredAt" placeholder="Enter year">
           <mat-error *ngIf="enteredAt.hasError('required')">
             Year is <strong>required</strong>
@@ -75,7 +75,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="field">
-          <mat-label>GraduatedAt</mat-label>
+          <mat-label>{{'FORM.GRADUETEDAT' | translate}}</mat-label>
           <input matInput formControlName="graduatedAt" placeholder="Enter year">
           <mat-error *ngIf="graduatedAt.hasError('required')">
             Year is <strong>required</strong>
@@ -91,9 +91,9 @@
     </div>
   </div>
 
-  <button type="button" class="photo-btn"  mat-raised-button (click)="fileInput.click()">Choose Photo</button>
+  <button type="button" class="photo-btn"  mat-raised-button (click)="fileInput.click()">{{'ACTIONS.PHOTO' | translate}}</button>
   <input hidden (change)="onFileSelected($event)" #fileInput type="file">
 
-  <button class="create-btn" mat-raised-button color="accent" [disabled]="form.invalid" (click)="submit()">Edit</button>
+  <button class="create-btn" mat-raised-button color="accent" [disabled]="form.invalid" (click)="submit()">{{'ACTIONS.EDIT' | translate}}</button>
 </form>
 

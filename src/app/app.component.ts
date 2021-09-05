@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef, Component, OnDestroy, OnInit
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoadingService } from './shared/services/loading.service';
 
@@ -12,12 +14,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
 
-  constructor(private loadingService: LoadingService, private cdr: ChangeDetectorRef) {
-
-  }
+  constructor(private loadingService: LoadingService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.subscription = this.loadingService.loading$.subscribe(data => this.loading = data);
+    this.subscription = this.loadingService.loading$.subscribe((data) => this.loading = data);
   }
 
   ngAfterContentChecked() {
@@ -27,6 +27,4 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-
 }

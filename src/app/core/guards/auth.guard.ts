@@ -1,5 +1,7 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Injectable, OnDestroy } from '@angular/core';
+import {
+  ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree
+} from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
@@ -7,7 +9,6 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, OnDestroy {
-
   private isAuth$ = false;
 
   private subscription = new Subscription();
@@ -16,16 +17,16 @@ export class AuthGuard implements CanActivate, OnDestroy {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    this.subscription = this.auth.isAuth.subscribe(data => {
-      this.isAuth$ = data
-    })
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    this.subscription = this.auth.isAuth.subscribe((data) => {
+      this.isAuth$ = data;
+    });
     if (this.isAuth$) {
       return true;
-    } else {
-      this.router.navigate(['/login']);
-      return false;
     }
+    this.router.navigate(['/login']);
+    return false;
   }
 
   ngOnDestroy() {

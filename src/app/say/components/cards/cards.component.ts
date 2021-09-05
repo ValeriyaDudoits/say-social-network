@@ -17,12 +17,11 @@ export class CardsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.dataService.addData();
-    this.subscription = this.dataService.data$.subscribe(data => this.cards = data);
+    this.subscription = this.dataService.data$.subscribe((data) => this.cards = data);
   }
 
   ngOnDestroy() {
     this.cards = [];
     this.subscription.unsubscribe();
   }
-
 }

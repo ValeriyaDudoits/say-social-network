@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators
+} from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
+import { LanguagService } from 'src/app/core/services/language.service';
 import { DataService } from 'src/app/say/services/data.service';
 import { ICard } from 'src/app/shared/models/card';
 
@@ -9,8 +14,7 @@ import { ICard } from 'src/app/shared/models/card';
   templateUrl: './admin-form.component.html',
   styleUrls: ['./admin-form.component.scss']
 })
-export class AdminFormComponent {
-
+export class AdminFormComponent implements OnInit, OnDestroy {
   public base64: string | ArrayBuffer | null = '';
 
   public form: FormGroup;
@@ -29,11 +33,17 @@ export class AdminFormComponent {
 
   public enteredAt = new FormControl('', [Validators.required, this.integer()]);
 
-  public graduatedAt = new FormControl('', [Validators.required, this.graduetedValidation(this.enteredAt), this.integer()]);
+  public graduatedAt = new FormControl('', [Validators.required,
+    this.graduetedValidation(this.enteredAt), this.integer()]);
 
   public photo = new FormControl('', [Validators.required]);
 
-  constructor(private userService: DataService, private router: Router) {
+  private subscription = new Subscription();
+
+  constructor(private userService: DataService,
+    private router: Router,
+    public translate: TranslateService,
+    private langService: LanguagService) {
     this.form = new FormGroup({
       name: this.name,
       surname: this.surname,
@@ -51,6 +61,14 @@ export class AdminFormComponent {
     });
   }
 
+  ngOnInit() {
+    this.subscription = this.langService.language.subscribe((data) => this.translate.use(data));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   submit() {
     const data: ICard = {
       name: `${this.name.value} ${this.surname.value}`,
@@ -62,7 +80,7 @@ export class AdminFormComponent {
       online: false,
       posts: [],
       id: this.userService.getId()
-    }
+    };
     this.userService.setUser(data);
     this.router.navigate(['/main']);
   }
@@ -85,22 +103,22 @@ export class AdminFormComponent {
   }
 
   private birthdayValidation(control: FormControl,): ValidationErrors | null {
-    const value = control.value;
+    const { value } = control;
     const now = Date.now();
     if (value > now) {
-      return { birthdayValidation: 'Your date is incorrect!' }
+      return { birthdayValidation: 'Your date is incorrect!' };
     }
     return null;
   }
 
   private graduetedValidation(dateControl: FormControl) {
     return (control: FormControl): ValidationErrors | null => {
-      const value: string = control.value;
+      const { value } = control;
       if ((+dateControl.value - +value) > 0) {
-        return { graduetedValidation: 'Your date is incorrect!' }
+        return { graduetedValidation: 'Your date is incorrect!' };
       }
       return null;
-    }
+    };
   }
 
   private integer(): ValidatorFn {
@@ -123,6 +141,6 @@ export class AdminFormComponent {
     reader.onload = () => {
       this.base64 = reader.result;
     };
-    const img = reader.readAsDataURL(event?.target?.files[0]);
+    reader.readAsDataURL(event?.target?.files[0]);
   }
 }

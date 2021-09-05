@@ -6,34 +6,40 @@
       <mat-icon color="warn"> message</mat-icon>
     </div>
 
-    <button mat-raised-button color="accent" [routerLink]="['/main']">Main</button>
+    <button mat-raised-button color="accent" [routerLink]="['/main']">{{'MAIN.MAIN' | translate}}</button>
 
     <form class="search-form">
       <mat-form-field>
-        <mat-label>Find people</mat-label>
-        <input type="text"
-               placeholder="Pick one"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
+        <mat-label>{{'MAIN.FIND' | translate}}</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+          [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           <mat-option *ngFor="let user of filteredOptions | async" [value]="user">
             {{user}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <button mat-raised-button color="accent" class="find-btn" (click)="findUser()">Find</button>
+      <button mat-raised-button color="accent" class="find-btn" (click)="findUser()">{{'BTNS.FIND' | translate}}</button>
     </form>
+
+    <div>
+      <mat-form-field class="lang">
+        <mat-label>{{'MAIN.LANG' | translate}}</mat-label>
+        <mat-select [(ngModel)]="language" (ngModelChange)="changeLang()">
+          <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <div class="auth">
       <h3>{{authService.authName | async}}</h3>
       <mat-icon color="accent">person</mat-icon>
-      <button mat-raised-button color="accent" [routerLink]="['/login']" *ngIf="!isAdmin && !isAuth; else logoutBlock">Login</button>
+      <button mat-raised-button color="accent" [routerLink]="['/login']"
+        *ngIf="!isAdmin && !isAuth; else logoutBlock">{{'BTNS.LOGIN' | translate}}</button>
       <ng-template #logoutBlock>
-        <button mat-raised-button color="accent" (click)="authService.logout()" >Logout</button>
+        <button mat-raised-button color="accent" (click)="authService.logout()">{{'BTNS.LOGOUT' | translate}}</button>
       </ng-template>
-      <button mat-raised-button color="accent" *ngIf="isAdmin" [routerLink]="['/admin/create']">Create user</button>
+      <button mat-raised-button color="accent" *ngIf="isAdmin" [routerLink]="['/admin/create']">{{'ACTIONS.CREATE' | translate}}</button>
     </div>
 
   </div>

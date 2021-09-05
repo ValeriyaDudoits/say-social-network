@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/shop'),
+      dir: require('path').join(__dirname, './coverage/youtube-client'),
       subdir: '.',
       reporters: [
         { type: 'html' },

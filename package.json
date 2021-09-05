@@ -1,5 +1,5 @@
 {
-  "name": "shop",
+  "name": "say",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^12.1.5",
+    "@angular/animations": "~12.1.0-",
     "@angular/cdk": "^12.2.4",
     "@angular/common": "~12.1.0-",
     "@angular/compiler": "~12.1.0-",
@@ -21,6 +21,9 @@
     "@angular/platform-browser": "~12.1.0-",
     "@angular/platform-browser-dynamic": "~12.1.0-",
     "@angular/router": "~12.1.0-",
+    "@biesbjerg/ngx-translate-extract": "^7.0.4",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "ngx-toastr": "^14.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
@@ -40,8 +43,8 @@
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
     "eslint": "^7.26.0",
-    "eslint-config-airbnb-typescript": "^14.0.0",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.23.4",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

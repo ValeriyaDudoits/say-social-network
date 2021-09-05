@@ -4,18 +4,18 @@
       <img [src]="card.photo" alt="photo" height="300px" width="300px">
     </div>
     <div class="info">
-      <button mat-raised-button class="edit-btn" [routerLink]="['/admin/edit',card.id]" *ngIf="isAdmin" color="primary">Edit</button>
-      <p><span>Name: </span>{{card.name}}</p>
-      <p><span>Country: </span>{{card.country}}</p>
-      <p><span>City: </span>{{card.city}}</p>
-      <p><span>Age: </span>{{card.birthday | age}}</p>
-      <p><span>Birthday: </span>{{card.birthday | date: 'MMMM d, y'}}</p>
-      <div><span>Education </span>
+      <button mat-raised-button class="edit-btn" [routerLink]="['/admin/edit',card.id]" *ngIf="isAdmin" color="primary">{{'ACTIONS.EDIT' | translate}}</button>
+      <p><span>{{'FORM.NAME' | translate}}: </span>{{card.name}}</p>
+      <p><span>{{'FORM.COUNTRY' | translate}}: </span>{{card.country}}</p>
+      <p><span>{{'FORM.CITY' | translate}}: </span>{{card.city}}</p>
+      <p><span>{{'FORM.AGE' | translate}}: </span>{{card.birthday | age}}</p>
+      <p><span>{{'FORM.BIRTHDAY' | translate}}: </span>{{card.birthday | date: 'MMMM d, y'}}</p>
+      <div><span>{{'FORM.EDUCATION' | translate}}</span>
         <div *ngFor="let place of card.education">
           <hr>
           <p><span>University: </span>{{place.university}}</p>
-          <p><span>EnteredAt: </span>{{place.enteredAt}}</p>
-          <p><span>GraduatedAt: </span>{{place.graduatedAt}}</p>
+          <p><span>{{'FORM.ENTEREDAT' | translate}}: </span>{{place.enteredAt}}</p>
+          <p><span>{{'FORM.GRADUETEDAT' | translate}}: </span>{{place.graduatedAt}}</p>
         </div>
       </div>
     </div>
@@ -23,13 +23,13 @@
 
   <div class="post-block">
     <div class="post-name">
-      <h2>Posts</h2>
+      <h2>{{'MAIN.POSTS' | translate}}</h2>
     </div>
     <div *ngIf="card.posts.length > 0; else noPostsBlock">
       <app-post *ngFor="let post of card.posts" [post]="post"></app-post>
     </div>
     <ng-template #noPostsBlock>
-      <p class="warning">No posts yet!</p>
+      <p class="warning">{{'MAIN.NOPOST' | translate}}</p>
     </ng-template>
   </div>
 </div>

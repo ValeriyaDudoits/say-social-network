@@ -10,7 +10,6 @@ import { LoadingService } from 'src/app/shared/services/loading.service';
   providedIn: 'root'
 })
 export class DataService {
-
   private data: ICard[] = [];
 
   public users$ = new BehaviorSubject<string[]>([]);
@@ -19,62 +18,63 @@ export class DataService {
 
   public data$ = new BehaviorSubject<ICard[]>([]);
 
-  constructor(private http: HttpClient, private loading: LoadingService,
+  constructor(private http: HttpClient,
+    private loading: LoadingService,
     private toastr: ToastrService) { }
 
   addData() {
     this.loading.startLoading();
-    this.http.get<ICard[]>(SAY_URL).subscribe(data => {
+    this.http.get<ICard[]>(SAY_URL).subscribe((data) => {
       this.data$.next(data);
       this.data = data;
       this.loading.endLoading();
       this.updateUserList();
-    })
+    });
   }
 
   private updateUserList() {
     const users: string[] = [];
-    this.data.map(user => users.push(user.name));
+    this.data.map((user) => users.push(user.name));
     this.users$.next(users);
   }
 
   getById(id: number) {
     this.loading.startLoading();
-    this.http.get<ICard>(`${SAY_URL}/${id}`).subscribe(data => {
+    this.http.get<ICard>(`${SAY_URL}/${id}`).subscribe((data) => {
       this.card$.next(data);
       this.loading.endLoading();
-    })
+    });
   }
 
   deleteUser(id: number) {
     this.loading.startLoading();
     this.http.delete<ICard[]>(`${SAY_URL}/${id}`).subscribe(() => {
       this.loading.endLoading();
-      this.data = this.data.filter(user => user.id !== id);
+      this.data = this.data.filter((user) => user.id !== id);
       this.data$.next(this.data);
     });
     this.updateUserList();
-    this.toastr.success("You have deleted a user!");
+    this.toastr.success('You have deleted a user!');
   }
 
   findUser(name: string) {
-    this.data = this.data.filter(user => user.name === name);
+    this.data = this.data.filter((user) => user.name === name);
     this.data$.next(this.data);
   }
 
   setUser(data: ICard) {
-    this.http.post<ICard[]>(SAY_URL, data).subscribe(data => {
-    })
+    this.http.post<ICard[]>(SAY_URL, data).subscribe(() => {
+    });
   }
 
   editUser(id: number, data: ICard) {
-    this.http.put<ICard[]>(`${SAY_URL}/${id}`, data).subscribe(data => {
+    this.http.put<ICard[]>(`${SAY_URL}/${id}`, data).subscribe(() => {
     });
-    this.toastr.success("You have edited a user!");
+    this.toastr.success('You have edited a user!');
   }
 
   getId() {
-    const ids = this.data.map(item => item.id);
+    const ids = this.data.map((item) => item.id);
     return Math.max(...ids) + 1;
   }
 }

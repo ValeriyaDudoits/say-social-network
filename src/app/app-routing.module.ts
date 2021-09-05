@@ -11,7 +11,8 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'main', loadChildren: () => import('./say/say.module').then((m) => m.SayModule),
+    path: 'main',
+    loadChildren: () => import('./say/say.module').then((m) => m.SayModule),
     canActivate: [AuthGuard],
 
   },
@@ -20,7 +21,8 @@ const routes: Routes = [
 
   },
   {
-    path: 'admin', loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
     canActivate: [AdminGuard],
 
   },

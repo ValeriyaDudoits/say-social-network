@@ -1,0 +1,36 @@
+{
+  "MAIN": {
+    "MAIN": "Main",
+    "FIND": "Find people",
+    "LANG": "Choose language",
+    "POSTS": "Posts",
+    "NOPOST": "No posts yet!"
+  },
+  "BTNS": {
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "LOGINADMIN": "Login as Admin",
+    "SHOW_MORE": "Show more",
+    "FIND": "Find",
+    "DELETE": "Delete",
+    "ADDUNIVERSITY": "Add university"
+  },
+  "FORM": {
+    "PASSWORD":"Password",
+    "NAME": "Name",
+    "SURNAME": "Surname",
+    "COUNTRY": "Country",
+    "CITY": "City",
+    "AGE": "Age",
+    "BIRTHDAY": "Birthday",
+    "EDUCATION": "Education",
+    "ENTEREDAT": "Entered At",
+    "GRADUETEDAT": "Gradueted At"
+  },
+  "ACTIONS": {
+    "EDIT": "Edit",
+    "CREATE": "Create User",
+    "NEW": "New User",
+    "PHOTO": "Choose Photo"
+   }
+}

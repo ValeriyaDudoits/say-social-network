@@ -5,14 +5,12 @@ import { OnlineColor } from '../models/constants';
   selector: '[appOnline]'
 })
 export class OnlineDirective {
-
   @Input('appOnline') isOnline: boolean | undefined = false;
 
   @HostBinding('style.color') get color() {
     if (this.isOnline) {
       return OnlineColor.Online;
-    } else {
-      return OnlineColor.Offline;
     }
+    return OnlineColor.Offline;
   }
 }

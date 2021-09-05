@@ -1,8 +1,12 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component, Input, OnDestroy, OnInit
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { DeleteDialogComponent } from 'src/app/admin/components/delete-dialog/delete-dialog.component';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { LanguagService } from 'src/app/core/services/language.service';
 import { ICard } from 'src/app/shared/models/card';
 import { DataService } from '../../services/data.service';
 
@@ -19,10 +23,14 @@ export class CardComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
 
   constructor(private authService: AuthService, public userService: DataService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, public translate: TranslateService, private langService: LanguagService) {
+  }
 
   ngOnInit(): void {
-    this.subscription = this.authService.isAdmin.subscribe(data => this.isAdmin = data)
+    this.subscription = this.authService.isAdmin
+      .subscribe((data) => this.isAdmin = data)
+      .add(this.langService.language
+        .subscribe((data) => this.translate.use(data)));
   }
 
   ngOnDestroy() {
@@ -37,6 +45,4 @@ export class CardComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(() => {
     });
   }
-
 }
-

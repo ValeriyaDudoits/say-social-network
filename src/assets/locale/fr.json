@@ -1,0 +1,36 @@
+{
+  "MAIN": {
+    "MAIN": "Principal",
+    "FIND": "Trouver des gens",
+    "LANG": "Choisir la langue",
+    "POSTS": "Des postes",
+    "NOPOST": "Pas encore de messages!"
+  },
+  "BTNS": {
+    "LOGIN": "connexion",
+    "LOGOUT": "Se déconnecter",
+    "LOGINADMIN": "Connectez-vous en tant qu'administrateur",
+    "SHOW_MORE": "Montre plus",
+    "FIND": "Trouver",
+    "DELETE": "Effacer",
+    "ADDUNIVERSITY": "Ajouter une université"
+  },
+  "FORM": {
+    "PASSWORD":"Mot de passe",
+    "NAME": "Nom",
+    "SURNAME": "Nom de famille",
+    "COUNTRY": "Les pays",
+    "CITY": "Ville",
+    "AGE": "Âge",
+    "BIRTHDAY": "Anniversaire",
+    "EDUCATION": "Éducation",
+    "ENTEREDAT": "Entré à",
+    "GRADUETEDAT": "Diplômé à"
+  },
+  "ACTIONS": {
+    "EDIT": "Éditer",
+    "CREATE": "Créer un utilisateur",
+    "NEW": "Nouvel utilisateur",
+    "PHOTO": "Choisissez la photo"
+   }
+}

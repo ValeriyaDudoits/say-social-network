@@ -9,8 +9,6 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { EditPageComponent } from './pages/edit-page/edit-page.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
 
-
-
 @NgModule({
   declarations: [
     DeleteDialogComponent,

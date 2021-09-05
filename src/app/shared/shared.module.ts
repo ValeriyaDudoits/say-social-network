@@ -8,11 +8,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { OnlineDirective } from './directives/online.directive';
-import { AgePipe } from './pipe/age.pipe';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MatSelectModule } from '@angular/material/select';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { AgePipe } from './pipe/age.pipe';
+import { OnlineDirective } from './directives/online.directive';
+import { HttpLoaderFactory } from '../app.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,15 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      useDefaultLang: false,
+    }),
   ],
   exports: [
     MatIconModule,
@@ -44,7 +56,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatAutocompleteModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule,
+    TranslateModule
   ]
 })
 export class SharedModule { }

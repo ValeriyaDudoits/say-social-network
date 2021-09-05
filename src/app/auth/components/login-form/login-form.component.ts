@@ -7,8 +7,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
-
+export class LoginFormComponent {
   public form: FormGroup;
 
   public emailFormControl = new FormControl('', [
@@ -29,9 +28,6 @@ export class LoginFormComponent implements OnInit {
       login: this.loginFormControl,
       password: this.passwordFormControl,
     });
-  }
-  ngOnInit(): void {
-
   }
 
   login() {

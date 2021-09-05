@@ -8,11 +8,11 @@ import { DataService } from 'src/app/say/services/data.service';
   styleUrls: ['./delete-dialog.component.scss']
 })
 export class DeleteDialogComponent {
-
   constructor(
     public dialogRef: MatDialogRef<DeleteDialogComponent>,
     private userService: DataService,
-    @Inject(MAT_DIALOG_DATA) public data: number) { }
+    @Inject(MAT_DIALOG_DATA) public data: number
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();

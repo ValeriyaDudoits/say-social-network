@@ -9,10 +9,14 @@
         "createDefaultProgram": true
       },
       "extends": [
-        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@angular-eslint/recommended",
         "airbnb-typescript/base"
       ],
       "rules": {
+        "no-plusplus": "off",
+        "no-return-assign": "off",
+        "indent": "off",
+        "class-methods-use-this": "off",
         "@typescript-eslint/comma-dangle": "off",
         "@angular-eslint/directive-selector": [
           "error",
@@ -43,9 +47,8 @@
     },
     {
       "files": ["*.html"],
-      "extends": ["plugin:@typescript-eslint/eslint-recommended"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     }
   ]
 }
-
