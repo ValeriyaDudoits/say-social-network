@@ -21,6 +21,5 @@ export class DeleteDialogComponent {
   onYesClick() {
     this.userService.deleteUser(this.data);
     this.dialogRef.close();
-    // this.toastr.success("You have deleted a user!")
   }
 }

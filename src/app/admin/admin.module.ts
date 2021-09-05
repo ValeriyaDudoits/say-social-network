@@ -6,6 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminFormComponent } from './components/admin-form/admin-form.component';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { EditPageComponent } from './pages/edit-page/edit-page.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 
 
@@ -13,7 +15,9 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
   declarations: [
     DeleteDialogComponent,
     AdminPageComponent,
-    AdminFormComponent
+    AdminFormComponent,
+    EditPageComponent,
+    EditFormComponent
   ],
   imports: [
     CommonModule,
@@ -22,8 +26,12 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     FormsModule,
     RouterModule.forChild([
       {
-        path: '',
+        path: 'create',
         component: AdminPageComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditPageComponent,
       },
     ]),
   ],

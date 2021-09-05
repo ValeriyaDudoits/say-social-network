@@ -7,9 +7,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-  public isAuth = new BehaviorSubject(true); //check
+  public isAuth = new BehaviorSubject(false);
 
-  public isAdmin = new BehaviorSubject(true); //check
+  public isAdmin = new BehaviorSubject(false);
 
   public authName = new BehaviorSubject('');
 

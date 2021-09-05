@@ -3,6 +3,7 @@
 }
 
 .detail-block {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +23,12 @@
     span {
       font-weight: bold;
       margin-right: 5px;
+    }
+
+    .edit-btn {
+      position: absolute;
+      top: 15px;
+      right: 158px;
     }
   }
 

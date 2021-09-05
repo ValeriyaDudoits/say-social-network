@@ -4,12 +4,20 @@
       <img [src]="card.photo" alt="photo" height="300px" width="300px">
     </div>
     <div class="info">
+      <button mat-raised-button class="edit-btn" [routerLink]="['/admin/edit',card.id]" *ngIf="isAdmin" color="primary">Edit</button>
       <p><span>Name: </span>{{card.name}}</p>
       <p><span>Country: </span>{{card.country}}</p>
       <p><span>City: </span>{{card.city}}</p>
       <p><span>Age: </span>{{card.birthday | age}}</p>
       <p><span>Birthday: </span>{{card.birthday | date: 'MMMM d, y'}}</p>
-      <p><span>Education: </span>{{card.education}}</p>
+      <div><span>Education </span>
+        <div *ngFor="let place of card.education">
+          <hr>
+          <p><span>University: </span>{{place.university}}</p>
+          <p><span>EnteredAt: </span>{{place.enteredAt}}</p>
+          <p><span>GraduatedAt: </span>{{place.graduatedAt}}</p>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -33,7 +33,7 @@
       <ng-template #logoutBlock>
         <button mat-raised-button color="accent" (click)="authService.logout()" >Logout</button>
       </ng-template>
-      <button mat-raised-button color="accent" *ngIf="isAdmin" [routerLink]="['/admin']">Create user</button>
+      <button mat-raised-button color="accent" *ngIf="isAdmin" [routerLink]="['/admin/create']">Create user</button>
     </div>
 
   </div>

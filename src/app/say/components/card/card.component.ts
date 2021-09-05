@@ -31,15 +31,12 @@ export class CardComponent implements OnInit, OnDestroy {
 
   openDialog(id: number): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      // width: '250px',
       data: id,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 
 }
-// userService.deleteUser(card.id)
 

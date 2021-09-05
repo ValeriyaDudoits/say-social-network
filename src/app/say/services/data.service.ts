@@ -61,4 +61,20 @@ export class DataService {
     this.data = this.data.filter(user => user.name === name);
     this.data$.next(this.data);
   }
+
+  setUser(data: ICard) {
+    this.http.post<ICard[]>(SAY_URL, data).subscribe(data => {
+    })
+  }
+
+  editUser(id: number, data: ICard) {
+    this.http.put<ICard[]>(`${SAY_URL}/${id}`, data).subscribe(data => {
+    });
+    this.toastr.success("You have edited a user!");
+  }
+
+  getId() {
+    const ids = this.data.map(item => item.id);
+    return Math.max(...ids) + 1;
+  }
 }
