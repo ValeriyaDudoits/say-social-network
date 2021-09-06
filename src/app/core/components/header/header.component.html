@@ -19,12 +19,15 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <button mat-raised-button color="accent" class="find-btn" (click)="findUser()">{{'BTNS.FIND' | translate}}</button>
+      <button mat-raised-button color="accent" class="find-btn" (click)="findUser()">{{'BTNS.FIND' |
+        translate}}</button>
     </form>
 
     <form class="search-form-mobile">
       <mat-form-field class="search-field-mobile">
-        <mat-label><mat-icon>search</mat-icon></mat-label>
+        <mat-label>
+          <mat-icon>people</mat-icon>
+        </mat-label>
         <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
           [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -32,8 +35,8 @@
             {{user}}
           </mat-option>
         </mat-autocomplete>
+        <mat-icon (click)="findUser()">search</mat-icon>
       </mat-form-field>
-      <button mat-raised-button color="accent" class="find-btn" (click)="findUser()">{{'BTNS.FIND' | translate}}</button>
     </form>
 
     <div class="lang-form">
@@ -47,7 +50,9 @@
 
     <div class="lang-form-mobile">
       <mat-form-field class="lang">
-        <mat-label>	<mat-icon>language</mat-icon></mat-label>
+        <mat-label>
+          <mat-icon>language</mat-icon>
+        </mat-label>
         <mat-select [(ngModel)]="language" (ngModelChange)="changeLang()">
           <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</mat-option>
         </mat-select>
@@ -62,7 +67,8 @@
       <ng-template #logoutBlock>
         <button mat-raised-button color="accent" (click)="authService.logout()">{{'BTNS.LOGOUT' | translate}}</button>
       </ng-template>
-      <button mat-raised-button color="accent" *ngIf="isAdmin" [routerLink]="['/admin/create']">{{'ACTIONS.CREATE' | translate}}</button>
+      <button mat-raised-button color="accent" *ngIf="isAdmin" [routerLink]="['/admin/create']">{{'ACTIONS.CREATE' |
+        translate}}</button>
     </div>
 
   </div>
