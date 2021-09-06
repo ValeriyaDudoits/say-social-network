@@ -9,6 +9,7 @@ mat-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 
     mat-form-field {
       width: 350px;
@@ -26,10 +27,26 @@ mat-toolbar {
     .find-btn {
       margin-left: 10px;
     }
-
   }
 }
 
 .lang {
   width: 176px !important;
+}
+
+@media all and (max-width: 1020px) {
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    .search-form {
+      width: 150px;
+
+      .search-field {
+        width: 150px !important;
+      }
+    }
+    .lang {
+      width: 100px !important;
+    }
+  }
 }

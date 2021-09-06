@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <div class="container header">
+  <div class="header">
 
     <div class="logo">
       <span>Say</span>
@@ -9,7 +9,7 @@
     <button mat-raised-button color="accent" [routerLink]="['/main']">{{'MAIN.MAIN' | translate}}</button>
 
     <form class="search-form">
-      <mat-form-field>
+      <mat-form-field class="search-field">
         <mat-label>{{'MAIN.FIND' | translate}}</mat-label>
         <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
           [matAutocomplete]="auto">
