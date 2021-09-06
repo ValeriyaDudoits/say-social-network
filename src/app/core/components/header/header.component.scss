@@ -15,6 +15,14 @@ mat-toolbar {
       width: 350px;
     }
 
+    .search-form-mobile {
+      display: none;
+    }
+
+    .lang-form-mobile {
+      display: none;
+    }
+
     .auth {
       display: flex;
       align-items: center;
@@ -45,8 +53,27 @@ mat-toolbar {
         width: 150px !important;
       }
     }
-    .lang {
-      width: 100px !important;
+    .lang-form {
+      display: none;
+    }
+
+    .lang-form-mobile {
+      display: block !important;
+      .lang {
+        width: 100px !important;
+      }
+    }
+
+    .search-form {
+      display: none;
+    }
+    .search-form-mobile {
+      display: block !important;
+      width: 100px;
+
+      .search-field-mobile {
+        width: 100px;
+      }
     }
   }
 }
