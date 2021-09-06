@@ -29,6 +29,9 @@ export class DataService {
       this.data = data;
       this.loading.endLoading();
       this.updateUserList();
+    }, (error)=> {
+      console.log(error);
+      this.loading.endLoading();
     });
   }
 
@@ -43,6 +46,9 @@ export class DataService {
     this.http.get<ICard>(`${SAY_URL}/${id}`).subscribe((data) => {
       this.card$.next(data);
       this.loading.endLoading();
+    }, (error)=> {
+      console.log(error);
+      this.loading.endLoading();
     });
   }
 
@@ -52,6 +58,9 @@ export class DataService {
       this.loading.endLoading();
       this.data = this.data.filter((user) => user.id !== id);
       this.data$.next(this.data);
+    }, (error)=> {
+      console.log(error);
+      this.loading.endLoading();
     });
     this.updateUserList();
     this.toastr.success('You have deleted a user!');
